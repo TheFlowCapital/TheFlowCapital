@@ -11,19 +11,20 @@
 <style>/* Layout: franja negra con logo; catálogo público y panel privado comparten una columna centrada. Tarjetas negras para cifras, superficies blancas para datos. Un solo tema, negro sobre blanco, por decisión de marca. */
 :root{
   color-scheme:light;
-  --ink:#0b0b0b; --paper:#ffffff; --mist:#f4f4f2; --line:#e2e2de; --mute:#76766f; --soft:#a9a9a3; --dash:#c4c4bf;
+  --ink:#0b0b0b; --paper:#ffffff; --mist:#f1f7fd; --line:#d9e5f1; --mute:#66727f; --soft:#9fadbb; --dash:#bfcddb; --shadow:0 1px 2px rgba(20,60,110,.05),0 10px 28px rgba(20,60,110,.07);
   --display:"Outfit","Helvetica Neue",Arial,sans-serif;
   --body:"Figtree","Helvetica Neue",Arial,sans-serif;
   --r:14px;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:var(--mist);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+body{background:linear-gradient(180deg,#eaf4fd 0,#f6fafe 420px,#f6fafe 100%);background-color:#f6fafe;color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
 button,input,select,textarea{font:inherit;color:inherit}
 header.top{background:#000;display:flex;justify-content:center;padding:0 16px;overflow:hidden}
 header.top a{display:block;line-height:0;border-radius:12px}
 header.top img{width:176px;height:176px;display:block;margin:-28px 0 -22px}
-main{max-width:1080px;margin:0 auto;padding:20px 16px 64px;display:flex;flex-direction:column;gap:20px}
+#root{min-height:100vh;display:flex;flex-direction:column}
+main{flex:1;width:100%;max-width:1080px;margin:0 auto;padding:20px 16px 64px;display:flex;flex-direction:column;gap:20px}
 h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.01em}
 h1{font-size:clamp(26px,5vw,40px);font-weight:700;line-height:1.05;text-transform:uppercase;overflow-wrap:anywhere}
 h2{font-size:20px;font-weight:600}
@@ -35,7 +36,7 @@ p{margin:0}
 :focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 header.top :focus-visible{outline-color:var(--paper)}
 
-.tabs{display:flex;gap:6px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px;align-self:center}
+.tabs{display:flex;gap:6px;background:var(--paper);box-shadow:var(--shadow);border:1px solid var(--line);border-radius:999px;padding:4px;align-self:center}
 .tabs a{padding:8px 18px;border-radius:999px;text-decoration:none;color:var(--mute);font-weight:600}
 .tabs a.on{background:var(--ink);color:var(--paper)}
 
@@ -44,7 +45,7 @@ header.top :focus-visible{outline-color:var(--paper)}
 .tile .eyebrow{color:var(--soft)}
 .tile .num{font-size:clamp(19px,2.6vw,24px);font-weight:600;overflow-wrap:anywhere}
 
-.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:14px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;display:flex;flex-direction:column;gap:14px}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .status{font-size:13px;color:var(--mute)}
 .status.err{color:var(--ink);font-weight:600}
@@ -82,8 +83,8 @@ input.money{text-align:right;font-family:var(--display);font-variant-numeric:tab
 
 .cars{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
 .car{background:var(--paper);border:1.5px dashed var(--dash);border-radius:var(--r);overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .15s,border-color .15s}
-.car:hover{border-color:#9a9a94;transform:translateY(-2px)}
-.car.solid{border:1px solid var(--line)}
+.car:hover{border-color:#8fa3b8;transform:translateY(-2px)}
+.car.solid{border:1px solid var(--line);box-shadow:var(--shadow)}
 .car .ph{position:relative;flex:none;width:100%;aspect-ratio:16/10;overflow:hidden;background:var(--ink);display:grid;place-items:center;color:#555}
 .car .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .car .ph svg{width:56px;height:56px}
@@ -161,12 +162,12 @@ input.money{text-align:right;font-family:var(--display);font-variant-numeric:tab
 .obs{white-space:pre-wrap;max-width:70ch}
 .cta{background:var(--ink);color:var(--paper);border-radius:var(--r);padding:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .cta .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.cta .btn:hover{background:#e9e9e6}
+.cta .btn:hover{background:#e6eef6}
 .cta p{color:var(--soft)}
 .intro{display:flex;flex-direction:column;gap:6px}
 .searchbar{display:flex;gap:10px;align-items:center}
 .searchbar input{background:var(--paper);border-color:var(--line);height:46px;border-radius:999px;padding:0 18px}
-footer.foot{text-align:center;color:var(--mute);font-size:13px;padding-top:8px}
+
 
 @media (max-width:760px){
   .hero{grid-template-columns:1fr}
@@ -186,6 +187,58 @@ footer.foot{text-align:center;color:var(--mute);font-size:13px;padding-top:8px}
 @media (min-width:761px) and (max-width:980px){.specs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (prefers-reduced-motion:reduce){.car,.switch .knob,.switch .knob::after{transition:none}}
 
+.ulist{display:flex;flex-direction:column}
+.urow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--line)}
+.uinfo{display:flex;flex-direction:column;min-width:0}
+.urow .confirm input{width:240px;max-width:100%}
+.urow .btn{padding:8px 14px;font-size:14px}
+.uform{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:end}
+.uform .btn{justify-self:start}
+@media (max-width:760px){.uform{grid-template-columns:1fr}}
+/* iPhone amplía la página al tocar campos con letra menor de 16px; con 16px no lo hace */
+@media (max-width:760px){input[type=text],input[type=password],input[type=date],input[type=search],select,textarea{font-size:16px}}
+html{-webkit-text-size-adjust:100%}
+html,body{overflow-x:hidden}
+footer.site{background:#000;color:#c9d1d9;margin-top:24px}
+.fwrap{max-width:1080px;margin:0 auto;padding:36px 16px 28px;display:flex;flex-direction:column;gap:26px}
+.fcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+.fcol{display:flex;flex-direction:column;gap:8px;min-width:0}
+.fcol .eyebrow{color:#7d8894}
+.fcol a,.fcol span.v{color:#fff;text-decoration:none;display:flex;align-items:flex-start;gap:9px;overflow-wrap:anywhere}
+.fcol a:hover{text-decoration:underline}
+.fcol svg{width:18px;height:18px;flex:none;margin-top:2px;color:#9fadbb}
+.fsoc{display:flex;flex-wrap:wrap;gap:8px}
+.fsoc a{border:1px solid #2c333b;border-radius:999px;padding:7px 13px;align-items:center}
+.fsoc a:hover{border-color:#fff;text-decoration:none}
+.fsoc svg{margin-top:0}
+.fend{border-top:1px solid #1d2227;padding-top:22px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.flogo{width:150px;height:150px;margin:-26px 0 -22px;filter:grayscale(1);opacity:.42}
+.fcopy{font-size:12px;color:#6c7783;text-align:center;position:relative;z-index:1}
+footer.site :focus-visible{outline-color:#fff}
+.sveh{padding:0;gap:0;overflow:hidden}
+.sveh summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:84px minmax(0,1fr) auto 24px;gap:14px;align-items:center;padding:12px 16px 12px 12px}
+.sveh summary::-webkit-details-marker{display:none}
+.sthumb{width:84px;height:62px;border-radius:10px;background:var(--ink);overflow:hidden;display:grid;place-items:center;color:#555}
+.sthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.sthumb svg{width:32px;height:32px}
+.sname{display:flex;flex-direction:column;gap:5px;min-width:0}
+.sname strong{font-family:var(--display);font-size:17px;text-transform:uppercase;line-height:1.15;overflow-wrap:anywhere}
+.snum{text-align:right;display:flex;flex-direction:column;gap:2px}
+.snum .num{font-weight:600;font-size:16px}
+.chev{width:20px;height:20px;color:var(--mute);transition:transform .15s}
+.sveh[open] .chev{transform:rotate(90deg)}
+.sbody{border-top:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:14px}
+.smeta{display:flex;flex-wrap:wrap;gap:6px 22px;color:var(--mute);font-size:14px}
+.stable{width:100%;border-collapse:collapse;font-size:14px}
+.stable th{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--mute);text-align:left;padding:0 8px 8px 0;border-bottom:1.5px solid var(--ink)}
+.stable td{padding:10px 8px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.stable th:last-child,.stable td:last-child{text-align:right;padding-right:0;white-space:nowrap}
+.stable td:first-child{font-weight:600}
+.tscroll{overflow-x:auto}
+.linkbox{display:flex;gap:8px;flex-wrap:wrap}
+.linkbox input{flex:1 1 260px;font-size:13px}
+@media (max-width:760px){.sveh summary{grid-template-columns:64px minmax(0,1fr) 20px;gap:10px}.sthumb{width:64px;height:48px}.snum{grid-column:1/-1;flex-direction:row;justify-content:space-between;text-align:left;border-top:1px dashed var(--line);padding-top:8px}.sveh summary .chev{grid-column:3;grid-row:1}.stable .hidem{display:none}}
+@media (prefers-reduced-motion:reduce){.chev{transition:none}}
 .login{max-width:420px;width:100%;align-self:center}
 .loginform{display:flex;flex-direction:column;gap:12px}
 footer.foot a{color:inherit}
@@ -218,9 +271,9 @@ var SPECS=[["condicion","Condición"],["tipo","Tipo"],["version","Versión"],["c
 
 var CAT={autos:[],whatsapp:""},catState="cargando";
 var S={cfg:{socio:DEF.socio,pct:DEF.pct,whatsapp:""},veh:{}};
-var admin=false,configurado=true,dirty={},ver={},timers={},chain={},pendingRender=false,statusMsg="",statusErr=false,confirmDel=false,loginErr="",loginBusy=false;
+var admin=false,configurado=true,dirty={},ver={},timers={},chain={},pendingRender=false,statusMsg="",statusErr=false,confirmDel=false,loginErr="",loginBusy=false,rol="",miNombre="",usuarios=[],uMsg="",uErr=false,uDel="",uPass="",enlaceTok="",lMsg="";
 var root=document.getElementById("root");
-root.innerHTML='<header class="top"><a href="#inicio" aria-label="Ir al catálogo"><img src="'+LOGO+'" alt="TheFlow Capital"></a></header><main id="app"></main>';
+root.innerHTML='<header class="top"><a href="#inicio" aria-label="Ir al catálogo"><img src="'+LOGO+'" alt="TheFlow Capital"></a></header><main id="app"></main><footer class="site" id="foot"></footer>';
 var app=document.getElementById("app");
 
 var I={
@@ -258,6 +311,7 @@ function route(){
   if(admin&&h==="panel")return{v:"panel"};
   if(admin&&h.indexOf("v-")===0&&S.veh[h])return{v:"veh",id:h};
   if(h==="entrar"&&!admin)return{v:"entrar"};
+  if(h.indexOf("socio-")===0&&h.length>12)return{v:"socio",t:h.slice(6)};
   if(h.indexOf("c-")===0&&catAuto(h.slice(2)))return{v:"auto",id:h.slice(2)};
   return{v:"cat"};
 }
@@ -326,11 +380,56 @@ function catalog(){
   if(wa)h+='<section class="cta"><div><h2>¿Buscas otro vehículo?</h2><p>Dinos qué necesitas y te lo conseguimos por importación.</p></div><a class="btn" href="'+esc(wa)+'" target="_blank" rel="noopener">'+I.chat+'Escribir por WhatsApp</a></section>';
   return h+foot();
 }
-function foot(){return '<footer class="foot">TheFlow Capital</footer>'}
+function foot(){return""}
+I.pin='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>';
+I.tel='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A15 15 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>';
+I.mail='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.500 7l8.500 6 8.500-6"/></svg>';
+I.link='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M10 6H6a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4"/></svg>';
+I.chev='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+function social(base,v){v=String(v||"").trim();if(!v)return"";if(/^https:\/\//i.test(v))return v;v=v.replace(/^https?:\/\/[^\/]*\//i,"").replace(/^@/,"").replace(/\/+$/,"");return v?base+encodeURIComponent(v):""}
+function siteFoot(){
+  var c=admin?S.cfg:(CAT.contacto||{}),cols="",wa=waLink(null);
+  if(c.direccion)cols+='<div class="fcol"><span class="eyebrow">Ubicación</span><span class="v">'+I.pin+'<span>'+esc(c.direccion)+'</span></span></div>';
+  if(c.telefono||wa)cols+='<div class="fcol"><span class="eyebrow">Teléfono</span>'+(c.telefono?'<a href="tel:'+esc(String(c.telefono).replace(/[^0-9+]/g,""))+'">'+I.tel+'<span>'+esc(c.telefono)+'</span></a>':'')+(wa?'<a href="'+esc(wa)+'" target="_blank" rel="noopener">'+I.chat+'<span>WhatsApp</span></a>':'')+'</div>';
+  if(c.email)cols+='<div class="fcol"><span class="eyebrow">Correo</span><a href="mailto:'+esc(c.email)+'">'+I.mail+'<span>'+esc(c.email)+'</span></a></div>';
+  var red=[["Instagram",social("https://www.instagram.com/",c.instagram)],["Facebook",social("https://www.facebook.com/",c.facebook)],["TikTok",social("https://www.tiktok.com/@",c.tiktok)]].filter(function(x){return x[1]});
+  if(red.length)cols+='<div class="fcol"><span class="eyebrow">Redes sociales</span><div class="fsoc">'+red.map(function(x){return'<a href="'+esc(x[1])+'" target="_blank" rel="noopener">'+I.link+'<span>'+x[0]+'</span></a>'}).join("")+'</div></div>';
+  return '<div class="fwrap">'+(cols?'<div class="fcols">'+cols+'</div>':'')+'<div class="fend"><img class="flogo" src="'+LOGO+'" alt="TheFlow Capital"><p class="fcopy">© '+new Date().getFullYear()+' TheFlow Capital. Vehículos de importación.</p></div></div>';
+}
+/* ---------- reporte del socio (solo lectura, por enlace secreto) ---------- */
+var SOC=null,socState="",socTok="";
+function fechaEs(f){var m=/^(\d{4})-(\d{2})-(\d{2})/.exec(f||"");return m?m[3]+"/"+m[2]+"/"+m[1]:""}
+function calcS(v){var inv=0;(v.gastos||[]).forEach(function(g){inv+=num(g.monto)});var sold=has(v.venta),venta=sold?num(v.venta):0,gan=sold?venta-inv:0,pp=Math.min(100,Math.max(0,num(SOC.pct)));return{inv:inv,sold:sold,venta:venta,gan:gan,parte:gan*pp/100,pp:pp}}
+function loadSocio(t){socTok=t;socState="cargando";SOC=null;return post("socio",{t:t}).then(function(d){SOC=d;socState="ok"},function(e){socState=e&&e.status===404?"malo":"error"}).then(function(){if(route().v==="socio")render()})}
+function socioView(){
+  if(socState!=="ok")return '<section class="panel empty-state"><h2>'+(socState==="malo"?"Este enlace ya no es válido":socState==="error"?"No se pudo cargar el reporte":"Cargando el reporte…")+'</h2>'+(socState==="malo"?'<p>Pídele a TheFlow Capital un enlace nuevo.</p>':socState==="error"?'<p>Revisa tu conexión y recarga la página.</p>':'')+'</section>';
+  var vs=SOC.veh||[],t={inv:0,venta:0,gan:0,parte:0},vend=0,pp=0;
+  vs.forEach(function(v){var c=calcS(v);t.inv+=c.inv;t.venta+=c.venta;t.gan+=c.gan;t.parte+=c.parte;pp=c.pp;if(c.sold)vend++});
+  if(!vs.length)pp=Math.min(100,Math.max(0,num(SOC.pct)));
+  var h='<section class="intro"><span class="eyebrow">Reporte privado · solo lectura</span><h1>Inversiones</h1><p class="muted">'+(SOC.socio?esc(SOC.socio)+", aquí":"Aquí")+' ves cada vehículo con sus gastos, su venta y tu parte de la ganancia. Los datos se actualizan solos cada vez que abres este enlace.</p></section>';
+  h+='<section class="tiles" aria-label="Totales">'+tile("Total invertido","x",money(t.inv))+tile("Total vendido","x",money(t.venta))+tile("Ganancia neta","x",money(t.gan))+tile("Tu parte ("+pp+"%)","x",money(t.parte))+'</section>';
+  h+='<div class="bar"><h2>Vehículos</h2><span class="status">'+vs.length+(vs.length===1?" vehículo":" vehículos")+" · "+vend+(vend===1?" vendido":" vendidos")+'</span></div>';
+  if(!vs.length)return h+'<section class="panel empty-state"><p>Todavía no hay vehículos registrados.</p></section>';
+  vs.forEach(function(v){
+    var c=calcS(v),rows=(v.gastos||[]).filter(function(g){return has(g.monto)||String(g.detalle).trim()});
+    h+='<details class="panel sveh"><summary><span class="sthumb">'+(v.foto?'<img src="'+esc(v.foto)+'" alt="" loading="lazy">':I.car)+'</span><span class="sname"><strong>'+esc(title(v))+'</strong><span class="pills"><span class="pill'+(v.estado==="Vendido"?" on":"")+'">'+esc(v.estado||"Sin estado")+'</span></span></span><span class="snum"><span><span class="eyebrow">Inversión</span> <span class="num">'+money(c.inv)+'</span></span><span><span class="eyebrow">Tu parte</span> <span class="num">'+(c.sold?money(c.parte):"Sin vender")+'</span></span></span>'+I.chev+'</summary><div class="sbody">';
+    var meta=[];if(v.fecha)meta.push("Comprado el "+fechaEs(v.fecha));if(v.vin)meta.push("VIN "+esc(v.vin));
+    if(meta.length)h+='<div class="smeta"><span>'+meta.join('</span><span>')+'</span></div>';
+    h+=rows.length?'<div class="tscroll"><table class="stable"><thead><tr><th>Concepto</th><th class="hidem">Detalle</th><th>Fecha</th><th>Monto</th></tr></thead><tbody>'+rows.map(function(g){return'<tr><td>'+esc(g.concepto||"Gasto")+'</td><td class="hidem">'+esc(g.detalle)+'</td><td>'+esc(fechaEs(g.fecha))+'</td><td class="num">'+money(num(g.monto))+'</td></tr>'}).join("")+'</tbody></table></div>':'<p class="muted">Aún no hay gastos registrados para este vehículo.</p>';
+    h+='<div class="result"><div class="line"><span class="lbl">Inversión final</span><span class="num">'+money(c.inv)+'</span></div><div class="line"><span class="lbl">Precio de venta</span><span class="num">'+(c.sold?money(c.venta):"Sin vender")+'</span></div><div class="line"><span class="lbl">Ganancia neta</span><span class="num">'+(c.sold?money(c.gan):"—")+'</span></div><div class="line final"><span class="lbl">Tu parte ('+c.pp+'%)</span><span class="num">'+(c.sold?money(c.parte):"—")+'</span></div></div></div></details>';
+  });
+  return h;
+}
+function enlaceBox(){
+  var h='<section class="panel"><div><h2>Enlace para tu socio</h2><p class="muted">Un reporte de solo lectura con cada vehículo, sus gastos, su venta y la parte de '+esc(S.cfg.socio||"tu socio")+'. No da acceso al panel ni permite cambiar nada.</p></div>';
+  if(enlaceTok)h+='<div class="linkbox"><input id="l-url" type="text" readonly aria-label="Enlace del socio" value="'+esc(location.origin+"/#socio-"+enlaceTok)+'"><button class="btn" data-act="lcopiar">Copiar enlace</button></div><div class="confirm"><button class="btn ghost" data-act="lcrear">Cambiar por uno nuevo</button><button class="btn ghost" data-act="lquitar">Desactivar enlace</button><span class="status" id="lmsg" role="status">'+esc(lMsg)+'</span></div><p class="muted">Quien tenga este enlace puede ver el reporte. Si lo cambias o lo desactivas, el anterior deja de funcionar al instante.</p>';
+  else h+='<div class="confirm"><button class="btn" data-act="lcrear">Crear enlace</button><span class="status" role="status">'+esc(lMsg)+'</span></div>';
+  return h+'</section>';
+}
 function loginView(){
   var h='<section class="panel login"><h2>Panel privado</h2>';
   if(!configurado)return h+'<p class="muted">Falta definir la contraseña del panel en Vercel (variable ADMIN_PASSWORD). Agrégala y vuelve a desplegar.</p><a class="btn ghost" href="#inicio">Volver al catálogo</a></section>';
-  return h+'<form id="login" class="loginform"><div class="field"><label for="pw">Contraseña</label><input id="pw" type="password" autocomplete="current-password" required></div>'+(loginErr?'<p class="status err" role="alert">'+esc(loginErr)+'</p>':'')+'<button class="btn" type="submit"'+(loginBusy?" disabled":"")+'>'+(loginBusy?"Entrando…":"Entrar")+'</button><a class="btn ghost" href="#inicio">Volver al catálogo</a></form></section>';
+  return h+'<form id="login" class="loginform"><div class="field"><label for="us">Usuario</label><input id="us" type="text" autocomplete="username" autocapitalize="none" placeholder="Déjalo vacío si eres el dueño"></div><div class="field"><label for="pw">Contraseña</label><input id="pw" type="password" autocomplete="current-password" required></div>'+(loginErr?'<p class="status err" role="alert">'+esc(loginErr)+'</p>':'')+'<button class="btn" type="submit"'+(loginBusy?" disabled":"")+'>'+(loginBusy?"Entrando…":"Entrar")+'</button><a class="btn ghost" href="#inicio">Volver al catálogo</a></form></section>';
 }
 function autoView(id){
   var a=catAuto(id),wa=waLink(a),fs=a.fotos||[];
@@ -350,18 +449,35 @@ function autoView(id){
 /* ---------- panel privado ---------- */
 function totals(){var t={inv:0,venta:0,gan:0,socio:0,mio:0};list().forEach(function(v){var c=calc(v);t.inv+=c.inv;t.venta+=c.venta;t.gan+=c.gan;t.socio+=c.socio;t.mio+=c.mio});return t}
 function notes(){return""}
+function accesos(){
+  var h='<section class="panel"><div><h2>Accesos al panel</h2><p class="muted">Crea un perfil para cada persona. Entran en la misma dirección que tú, con su usuario y su contraseña.</p></div>';
+  if(usuarios.length){h+='<div class="ulist">';usuarios.forEach(function(u){
+    h+='<div class="urow"><div class="uinfo"><strong>'+esc(u.nombre)+'</strong><span class="muted">Usuario: '+esc(u.usuario)+' · '+(u.rol==="completo"?"Acceso completo":"Solo catálogo")+'</span></div>';
+    if(uDel===u.id)h+='<span class="confirm">¿Eliminar este acceso?<button class="btn" data-act="udelyes" data-id="'+esc(u.id)+'">Sí, eliminar</button><button class="btn ghost" data-act="ucancel">Cancelar</button></span>';
+    else if(uPass===u.id)h+='<span class="confirm"><input id="u-newpass" type="text" autocomplete="off" placeholder="Nueva contraseña (mínimo 8)" aria-label="Nueva contraseña"><button class="btn" data-act="upassyes" data-id="'+esc(u.id)+'">Guardar</button><button class="btn ghost" data-act="ucancel">Cancelar</button></span>';
+    else h+='<span class="confirm"><button class="btn ghost" data-act="upass" data-id="'+esc(u.id)+'">Cambiar contraseña</button><button class="btn ghost" data-act="udel" data-id="'+esc(u.id)+'">Eliminar</button></span>';
+    h+='</div>'});h+='</div>'}
+  h+='<form id="uform" class="uform"><div class="field"><label for="u-nombre">Nombre</label><input id="u-nombre" type="text" required maxlength="60" placeholder="Ej. Ronny Arias"></div><div class="field"><label for="u-usuario">Usuario</label><input id="u-usuario" type="text" required autocapitalize="none" autocomplete="off" placeholder="Ej. ronny"></div><div class="field"><label for="u-pass">Contraseña</label><input id="u-pass" type="text" required minlength="8" autocomplete="off" placeholder="Mínimo 8 caracteres"></div><div class="field"><label for="u-rol">Permiso</label><select id="u-rol"><option value="catalogo">Solo catálogo: fotos y ficha, sin ver dinero</option><option value="completo">Acceso completo: también gastos y ganancias</option></select></div><button class="btn" type="submit">'+I.plus+'Crear acceso</button></form>';
+  if(uMsg)h+='<p class="status'+(uErr?" err":"")+'" role="status">'+esc(uMsg)+'</p>';
+  return h+'</section>';
+}
 function panel(){
-  var t=totals(),vs=list(),name=esc(S.cfg.socio||"socio"),np=vs.filter(function(v){return v.pub&&v.pub.on}).length;
-  var h=tabs("panel")+notes()+'<section class="tiles five" aria-label="Totales">'+tile("Total invertido","t-inv",money(t.inv))+tile("Total vendido","t-venta",money(t.venta))+tile("Ganancia neta","t-gan",money(t.gan))+tile('Parte de <span data-out="t-name">'+name+'</span>',"t-socio",money(t.socio))+tile("Mi ganancia","t-mio",money(t.mio))+'</section>';
-  h+='<section class="panel"><div class="cfg">'+field("cfg-socio","Socio",S.cfg.socio)+field("cfg-pct","% de la ganancia",S.cfg.pct,'type="text" inputmode="decimal"')+field("cfg-whatsapp","WhatsApp para clientes",S.cfg.whatsapp,'type="text" inputmode="tel" placeholder="809 000 0000"')+'</div></section>';
-  h+='<section class="panel"><div class="bar"><div><h2>Catálogo público</h2><p class="muted">'+np+(np===1?" vehículo visible":" vehículos visibles")+' para los clientes. Los cambios salen al instante.</p></div><button class="btn ghost" data-act="logout">Cerrar sesión</button></div><p class="muted">Solo se muestran los vehículos con "Mostrar en el catálogo" encendido. Nunca se publican gastos, ganancias, VIN ni datos del socio.</p></section>';
+  var t=totals(),vs=list(),name=esc(S.cfg.socio||"socio"),np=vs.filter(function(v){return v.pub&&v.pub.on}).length,lim=rol==="catalogo";
+  var h=tabs("panel")+notes();
+  if(!lim){
+    h+='<section class="tiles five" aria-label="Totales">'+tile("Total invertido","t-inv",money(t.inv))+tile("Total vendido","t-venta",money(t.venta))+tile("Ganancia neta","t-gan",money(t.gan))+tile('Parte de <span data-out="t-name">'+name+'</span>',"t-socio",money(t.socio))+tile("Mi ganancia","t-mio",money(t.mio))+'</section>';
+    h+='<section class="panel"><div class="cfg">'+field("cfg-socio","Socio",S.cfg.socio)+field("cfg-pct","% de la ganancia",S.cfg.pct,'type="text" inputmode="decimal"')+field("cfg-whatsapp","WhatsApp para clientes",S.cfg.whatsapp,'type="text" inputmode="tel" placeholder="809 000 0000"')+'</div></section>';
+    h+='<section class="panel"><div><h2>Datos del pie de página</h2><p class="muted">Aparecen al final del catálogo. Lo que dejes vacío no se muestra.</p></div><div class="grid3">'+field("cfg-direccion","Ubicación",S.cfg.direccion,'type="text" placeholder="Ej. Av. 27 de Febrero, Santo Domingo"')+field("cfg-telefono","Teléfono",S.cfg.telefono,'type="text" inputmode="tel" placeholder="809 000 0000"')+field("cfg-email","Correo",S.cfg.email,'type="text" inputmode="email" placeholder="ventas@tudominio.com"')+field("cfg-instagram","Instagram",S.cfg.instagram,'type="text" autocapitalize="none" placeholder="@usuario"')+field("cfg-facebook","Facebook",S.cfg.facebook,'type="text" autocapitalize="none" placeholder="usuario o enlace"')+field("cfg-tiktok","TikTok",S.cfg.tiktok,'type="text" autocapitalize="none" placeholder="@usuario"')+'</div></section>';
+  }
+  h+='<section class="panel"><div class="bar"><div><h2>Catálogo público</h2><p class="muted">'+np+(np===1?" vehículo visible":" vehículos visibles")+' para los clientes. Los cambios salen al instante.</p></div><button class="btn ghost" data-act="logout">Cerrar sesión'+(miNombre&&rol!=="dueno"?" ("+esc(miNombre)+")":"")+'</button></div><p class="muted">Solo se muestran los vehículos con "Mostrar en el catálogo" encendido. Nunca se publican gastos, ganancias, VIN ni datos del socio.</p></section>';
+  if(rol==="dueno")h+=enlaceBox()+accesos();
   h+='<div class="bar"><h2>Vehículos</h2>'+statusEl()+'</div>';
   if(!vs.length){
-    h+='<section class="panel empty-state"><h2>Aún no hay vehículos</h2><p>Agrega el primero. Viene con las filas más comunes (subasta, grúa, barco, aduana e impuestos) y puedes sumar todas las que necesites.</p><button class="btn" data-act="new">'+I.plus+'Agregar vehículo</button></section>';
+    h+='<section class="panel empty-state"><h2>Aún no hay vehículos</h2><p>Agrega el primero para llenar su ficha y subir sus fotos.</p><button class="btn" data-act="new">'+I.plus+'Agregar vehículo</button></section>';
   }else{
     h+='<section class="cars">';
     vs.forEach(function(v){var c=calc(v),f=fotosOf(v.id)[0];
-      h+='<a class="car" href="#'+esc(v.id)+'"><div class="ph">'+(f?'<img src="'+esc(f.data)+'" alt="">':I.car)+'</div><div class="info"><span class="pills"><span class="pill'+(v.estado==="Vendido"?" on":"")+'">'+esc(v.estado||"Sin estado")+'</span>'+(v.pub&&v.pub.on?'<span class="pill soft">En catálogo</span>':'')+'</span><span class="name">'+esc(title(v))+'</span><dl><dt>Inversión</dt><dd class="num">'+money(c.inv)+'</dd><dt>Mi ganancia</dt><dd class="num">'+(c.sold?money(c.mio):"Sin vender")+'</dd></dl></div></a>';
+      h+='<a class="car" href="#'+esc(v.id)+'"><div class="ph">'+(f?'<img src="'+esc(f.data)+'" alt="">':I.car)+'</div><div class="info"><span class="pills"><span class="pill'+(v.estado==="Vendido"?" on":"")+'">'+esc(v.estado||"Sin estado")+'</span>'+(v.pub&&v.pub.on?'<span class="pill soft">En catálogo</span>':'')+'</span><span class="name">'+esc(title(v))+'</span>'+(lim?"":'<dl><dt>Inversión</dt><dd class="num">'+money(c.inv)+'</dd><dt>Mi ganancia</dt><dd class="num">'+(c.sold?money(c.mio):"Sin vender")+'</dd></dl>')+'</div></a>';
     });
     h+='<button class="car new" data-act="new"><span class="plus">'+I.plus+'</span>Agregar vehículo</button></section>';
   }
@@ -384,6 +500,7 @@ function vehView(id){
     h+=gallery(fs.map(function(f){return f.data}),title(v))+'<div class="galtools">'+(fs.length<MAXF?'<label class="btn filebtn">'+I.plus+'Agregar fotos<input id="f-foto" type="file" accept="image/*" multiple aria-label="Agregar fotos"></label>':'')+(fs.length>1?'<button class="btn ghost" data-act="fcover">Usar como portada</button>':'')+'<button class="btn ghost" data-act="fdel">Quitar esta foto</button><span class="status" style="align-self:center">'+fs.length+' de '+MAXF+'</span></div>';
   }else h+='<label class="photo"><span class="empty">'+I.cam+'Agregar fotos del vehículo<span class="status">Puedes elegir varias a la vez</span></span><input id="f-foto" type="file" accept="image/*" multiple aria-label="Agregar fotos del vehículo"></label>';
   h+='</div><div class="side onmist"><h1 data-out="title">'+esc(title(v))+'</h1><div class="grid3">'+field("f-marca","Marca",v.marca)+field("f-modelo","Modelo",v.modelo)+field("f-anio","Año",v.anio,'type="text" inputmode="numeric" maxlength="4"')+field("f-vin","VIN / Chasis",v.vin)+field("f-fecha","Fecha de compra",v.fecha,'type="date"')+sel("f-estado","Estado",ESTADOS,v.estado)+'</div></div></section>';
+  if(rol!=="catalogo"){
   h+='<section class="tiles" aria-label="Resultado">'+tile("Inversión final","inv",money(c.inv))+tile("Precio de venta","venta",c.sold?money(c.venta):dash)+tile("Ganancia neta","gan",c.sold?money(c.gan):dash)+tile("Mi ganancia","mio",c.sold?money(c.mio):dash)+'</section>';
   h+='<section class="panel flat"><div class="bar"><h2>Gastos</h2><span class="status" data-out="count"></span></div><div class="rowhead eyebrow"><span>Concepto</span><span>Detalle</span><span>Fecha</span><span>Monto (USD)</span><span></span></div><div class="rows" id="rows">'+(v.gastos||[]).map(rowHtml).join("")+'</div><button class="add" data-act="addrow"><span class="plus">'+I.plus+'</span>Agregar gasto</button></section>';
   h+='<section class="panel result"><div class="line"><span class="lbl">Inversión final</span><span class="num" data-out="inv">'+money(c.inv)+'</span></div>'
@@ -391,6 +508,7 @@ function vehView(id){
    +'<div class="line"><span class="lbl">Ganancia neta</span><span class="num" data-out="gan">'+(c.sold?money(c.gan):dash)+'</span></div>'
    +'<div class="line"><span class="lbl">Menos '+pct()+'% para '+esc(S.cfg.socio||"socio")+'</span><span class="num" data-out="socio">'+(c.sold?money(-c.socio):dash)+'</span></div>'
    +'<div class="line final"><span class="lbl">Mi ganancia final</span><span class="num" data-out="mio">'+(c.sold?money(c.mio):dash)+'</span></div></section>';
+  }
   /* ficha pública */
   h+='<section class="panel"><div class="bar"><div><h2>Ficha para el catálogo público</h2><p class="muted">Esto es lo que verá el cliente. Llena lo que tengas; lo vacío no se muestra.</p></div><label class="switch"><input type="checkbox" id="p-on"'+(P.on?" checked":"")+'><span class="knob"></span>Mostrar en el catálogo</label></div>';
   h+='<div class="grid3">'+field("p-precio","Precio al público",P.precio,'type="text" inputmode="decimal" placeholder="Ej. 31000"')+sel("p-moneda","Moneda",OPC.moneda,P.moneda||"US$")+field("p-version","Versión / edición",P.version,'type="text" placeholder="Ej. EX-L, Sport, Limited"')
@@ -401,14 +519,15 @@ function vehView(id){
    +sel("p-pasajeros","Pasajeros",OPC.pasajeros,P.pasajeros,true)+'</div>';
   h+='<div><p class="eyebrow" style="margin-bottom:8px">Accesorios</p><div class="chips">'+ACC.map(function(a,i){var on=P.acc.indexOf(a)>=0;return'<label class="chip'+(on?" on":"")+'"><input type="checkbox" id="acc-'+i+'" data-acc="'+esc(a)+'"'+(on?" checked":"")+'>'+esc(a)+'</label>'}).join("")+'</div></div>';
   h+='<div class="field"><label for="p-obs">Observaciones para el cliente</label><textarea id="p-obs" placeholder="Estado del vehículo, financiamiento, si recibes vehículo como inicial, etc.">'+esc(P.obs)+'</textarea></div></section>';
-  h+=confirmDel?'<div class="confirm">¿Eliminar este vehículo, sus fotos y todos sus gastos? No se puede deshacer.<button class="btn" data-act="delyes">Sí, eliminar</button><button class="btn ghost" data-act="delno">Cancelar</button></div>':'<div><button class="btn ghost" data-act="delask">Eliminar vehículo</button></div>';
+  if(rol!=="catalogo")h+=confirmDel?'<div class="confirm">¿Eliminar este vehículo, sus fotos y todos sus gastos? No se puede deshacer.<button class="btn" data-act="delyes">Sí, eliminar</button><button class="btn ghost" data-act="delno">Cancelar</button></div>':'<div><button class="btn ghost" data-act="delask">Eliminar vehículo</button></div>';
   return h;
 }
 
 var lastView="";
 function render(keep){
   pendingRender=false;var r=route(),gi=keep?gidx():0;
-  app.innerHTML=r.v==="panel"?panel():r.v==="veh"?vehView(r.id):r.v==="auto"?autoView(r.id):r.v==="entrar"?loginView():catalog();
+  app.innerHTML=r.v==="panel"?panel():r.v==="veh"?vehView(r.id):r.v==="auto"?autoView(r.id):r.v==="entrar"?loginView():r.v==="socio"?socioView():catalog();
+  var ft=document.getElementById("foot");if(ft)ft.innerHTML=siteFoot();
   if(r.v==="veh")outs(r);
   gwire(gi);lastView=r.v+(r.id||"");
 }
@@ -435,6 +554,13 @@ app.addEventListener("click",function(e){
   if(act==="gnext")return ggo(gidx()+1);
   if(!admin)return;
   if(act==="new")return newVeh();
+  if(act==="lcrear"||act==="lquitar")return post("enlace",{accion:act==="lcrear"?"crear":"quitar"}).then(function(j){enlaceTok=j.token||"";lMsg=enlaceTok?"Enlace listo. Cópialo y envíaselo a tu socio.":"Enlace desactivado."},function(){lMsg="No se pudo cambiar el enlace. Inténtalo otra vez."}).then(function(){render(true)});
+  if(act==="lcopiar"){var lu=document.getElementById("l-url"),lm=document.getElementById("lmsg"),okc=function(){if(lm)lm.textContent="Enlace copiado."},noc=function(){lu.focus();lu.select();if(lm)lm.textContent="Mantén pulsado el enlace para copiarlo."};try{navigator.clipboard.writeText(lu.value).then(okc,noc)}catch(x){noc()}return}
+  if(act==="udel"){uDel=b.getAttribute("data-id");uPass="";return render(true)}
+  if(act==="upass"){uPass=b.getAttribute("data-id");uDel="";render(true);var np=document.getElementById("u-newpass");if(np)np.focus();return}
+  if(act==="ucancel"){uDel="";uPass="";return render(true)}
+  if(act==="udelyes")return post("usuario",{id:b.getAttribute("data-id"),borrar:true}).then(function(){uDel="";uMsg="Acceso eliminado.";uErr=false;return loadUsers()},function(e){uMsg=uFail(e);uErr=true}).then(function(){render(true)});
+  if(act==="upassyes"){var npw=(document.getElementById("u-newpass")||{}).value||"";return post("usuario",{id:b.getAttribute("data-id"),password:npw}).then(function(){uPass="";uMsg="Contraseña cambiada. Esa persona tendrá que entrar de nuevo.";uErr=false},function(e){uMsg=uFail(e);uErr=true}).then(function(){render(true)})}
   if(act==="logout")return flushAll().then(function(){return post("logout",{})}).then(function(){location.hash="inicio";location.reload()},function(){setStatus("No se pudo cerrar la sesión. Inténtalo otra vez.",true)});
   if(r.v!=="veh")return;var id=r.id,v=S.veh[id];
   if(act==="addrow"){var g={id:rid("g"),concepto:"",detalle:"",fecha:"",monto:""};v.gastos=v.gastos||[];v.gastos.push(g);save(id);
@@ -467,13 +593,20 @@ app.addEventListener("change",function(e){
 });
 app.addEventListener("keydown",function(e){if(e.target.id!=="track")return;if(e.key==="ArrowLeft"){e.preventDefault();ggo(gidx()-1)}else if(e.key==="ArrowRight"){e.preventDefault();ggo(gidx()+1)}});
 app.addEventListener("focusout",function(){setTimeout(function(){if(pendingRender&&!typing())render(true)},80)});
+function uFail(e){var c=e&&e.code;return c==="corta"?"La contraseña debe tener al menos 8 caracteres.":c==="repetido"?"Ese usuario ya existe. Elige otro.":c==="usuario"?"El usuario debe tener de 3 a 30 letras minúsculas o números, sin espacios.":c==="limite"?"Llegaste al máximo de 30 accesos.":"No se pudo guardar el acceso. Inténtalo otra vez."}
+function loadUsers(){return api("usuarios").then(function(j){usuarios=j.lista||[]},function(){})}
 app.addEventListener("submit",function(e){
+  if(e.target.id==="uform"){e.preventDefault();
+    var g=function(k){return document.getElementById(k).value};
+    post("usuario",{nombre:g("u-nombre"),usuario:g("u-usuario"),password:g("u-pass"),rol:g("u-rol")}).then(function(){uMsg="Acceso creado para "+g("u-nombre")+". Pásale su usuario y contraseña.";uErr=false;return loadUsers().then(function(){render(true)})},function(er){uMsg=uFail(er);uErr=true;var m=app.querySelector("#uform ~ .status");if(m){m.textContent=uMsg;m.className="status err"}else{document.getElementById("uform").insertAdjacentHTML("afterend",'<p class="status err" role="status">'+esc(uMsg)+'</p>')}});
+    return}
   if(e.target.id!=="login")return;e.preventDefault();if(loginBusy)return;
-  var pw=document.getElementById("pw").value;loginBusy=true;loginErr="";render();
-  post("login",{password:pw}).then(function(){loginBusy=false;return startAdmin()},function(err){loginBusy=false;loginErr=err&&err.status===401?"Contraseña incorrecta.":err&&err.code==="config"?"Falta definir la contraseña del panel en Vercel.":"No se pudo entrar. Inténtalo otra vez.";render();var p=document.getElementById("pw");if(p)p.focus()});
+  var pw=document.getElementById("pw").value,us=document.getElementById("us").value;loginBusy=true;loginErr="";render();
+  post("login",{password:pw,usuario:us}).then(function(){loginBusy=false;return startAdmin()},function(err){loginBusy=false;loginErr=err&&err.status===401?"Usuario o contraseña incorrectos.":err&&err.code==="config"?"Falta definir la contraseña del panel en Vercel.":"No se pudo entrar. Inténtalo otra vez.";render();var p=document.getElementById("pw");if(p)p.focus()});
 });
 window.addEventListener("hashchange",function(){
   confirmDel=false;render();window.scrollTo(0,0);
+  var rr=route();if(rr.v==="socio"&&rr.t!==socTok)loadSocio(rr.t);
   if(admin&&route().v==="cat")flushAll().then(loadCat).then(function(){if(route().v==="cat")render()});
 });
 
@@ -509,14 +642,17 @@ function addFotos(files,id){
 /* ---------- datos ---------- */
 function startAdmin(){
   return api("data").then(function(d){
-    S.cfg={socio:typeof d.cfg.socio==="string"?d.cfg.socio:DEF.socio,pct:d.cfg.pct==null?DEF.pct:num(d.cfg.pct),whatsapp:typeof d.cfg.whatsapp==="string"?d.cfg.whatsapp:""};
-    S.veh=d.veh||{};admin=true;loginErr="";
+    S.cfg=Object.assign({socio:DEF.socio,pct:DEF.pct,whatsapp:""},d.cfg||{});S.cfg.pct=S.cfg.pct==null?DEF.pct:num(S.cfg.pct);
+    S.veh=d.veh||{};admin=true;loginErr="";rol=d.rol||"dueno";miNombre=d.nombre||"";
+    if(rol==="dueno")Promise.all([loadUsers(),api("enlace").then(function(j){enlaceTok=j.token||""},function(){})]).then(function(){if(route().v==="panel")soft()});
     var h=location.hash;if(!h||h==="#"||h==="#entrar")location.hash="panel";
     render();
   },function(e){loginErr=e&&e.code==="config"?"Entraste, pero falta conectar la base de datos en Vercel.":"No se pudieron leer tus datos. Recarga la página.";render()});
 }
+if(route().v==="socio")socState="cargando";
 render();
-loadCat().then(function(){var v=route().v;if(v==="cat"||v==="auto")render()});
+if(route().v==="socio")loadSocio(route().t);
+loadCat().then(function(){var v=route().v;if(v==="cat"||v==="auto")render();else{var ft=document.getElementById("foot");if(ft)ft.innerHTML=siteFoot()}});
 api("me").then(function(j){configurado=j.configurado!==false;if(j.admin)return startAdmin();if(route().v==="entrar")render()},function(){});
 window.addEventListener("beforeunload",function(){Object.keys(dirty).forEach(function(id){if(dirty[id])flush(id)})});
 })();

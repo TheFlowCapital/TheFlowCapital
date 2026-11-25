@@ -326,7 +326,7 @@ function catalog(){
   if(wa)h+='<section class="cta"><div><h2>¿Buscas otro vehículo?</h2><p>Dinos qué necesitas y te lo conseguimos por importación.</p></div><a class="btn" href="'+esc(wa)+'" target="_blank" rel="noopener">'+I.chat+'Escribir por WhatsApp</a></section>';
   return h+foot();
 }
-function foot(){return '<footer class="foot">TheFlow Capital'+(admin?'':' · <a href="#entrar">Acceso</a>')+'</footer>'}
+function foot(){return '<footer class="foot">TheFlow Capital</footer>'}
 function loginView(){
   var h='<section class="panel login"><h2>Panel privado</h2>';
   if(!configurado)return h+'<p class="muted">Falta definir la contraseña del panel en Vercel (variable ADMIN_PASSWORD). Agrégala y vuelve a desplegar.</p><a class="btn ghost" href="#inicio">Volver al catálogo</a></section>';
